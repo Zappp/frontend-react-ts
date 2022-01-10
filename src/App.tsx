@@ -7,14 +7,18 @@ const userData = [
     surname: 'Kowalski',
     email: 'abcdefgh@gmail.com',
     password: 'xyz',
-    category: 'PRIVATE'
+    category: 'PRIVATE',
+    telNumber: 'sssssssss',
+    birthDate: 'dd-mm-yyyy',
   },
   {
     name: 'Andrzej2',
     surname: 'Kowalski2',
     email: 'a@gmail.com',
     password: 'zyx',
-    category: 'BUSINESS'
+    category: 'BUSINESS',
+    telNumber: 'sssssssss',
+    birthDate: 'dd-mm-yyyy',
   }
 ]
 

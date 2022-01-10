@@ -15,6 +15,9 @@ const Home: React.FC<Props> = ({ userData }) => {
           <th>Email</th>
           <th>Hasło</th>
           <th>Kategoria</th>
+          <th>Numer telefonu</th>
+          <th>Data urodzenia</th>
+
         </tr>
       </thead>
       <tbody>

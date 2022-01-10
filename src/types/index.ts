@@ -1,6 +1,8 @@
 export interface UserPrivateData {
     password?: String,
-    category?: String
+    category?: String,
+    telNumber?: String,
+    birthDate?: String 
 }
 
 export interface UserData extends UserPrivateData {
