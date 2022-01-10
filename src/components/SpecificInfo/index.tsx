@@ -16,7 +16,14 @@ const SpecificInfo: React.FC<Props> = ({ userPrivateData }) => {
           <td>{userPrivateData.telNumber}</td>
           <td>{userPrivateData.birthDate}</td>
         </>
-      ) : <><td></td><td></td><td></td><td></td></>}
+      ) : (
+        <>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </>
+      )}
       <td>
         <button type='button' onClick={() => setIsShown(!isShown)}>
           Pokaż/Ukryj

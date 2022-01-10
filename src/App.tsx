@@ -1,5 +1,8 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Home from './components/Home'
+import Login from './components/Login'
+import { useEffect, useState } from 'react'
+import Profile from './components/Profile'
 
 const userData = [
   {
@@ -9,7 +12,7 @@ const userData = [
     password: 'xyz',
     category: 'PRIVATE',
     telNumber: 'sssssssss',
-    birthDate: 'dd-mm-yyyy',
+    birthDate: 'dd-mm-yyyy'
   },
   {
     name: 'Andrzej2',
@@ -18,20 +21,45 @@ const userData = [
     password: 'zyx',
     category: 'BUSINESS',
     telNumber: 'sssssssss',
-    birthDate: 'dd-mm-yyyy',
+    birthDate: 'dd-mm-yyyy'
   }
 ]
 
 const App = () => {
+  const [isAuth, setIsAuth] = useState(false)
+
+  useEffect(() => {
+    const isAuthLocalStorage = localStorage.getItem('isAuth')
+    isAuthLocalStorage && JSON.parse(isAuthLocalStorage)
+      ? setIsAuth(true)
+      : setIsAuth(false)
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('isAuth', String(isAuth))
+  }, [isAuth])
+
   //   const userData: UserData = getData('https://example.com/answer', { answer: 42 }).then(data => {
   //     console.log(data) // JSON data parsed by `data.json()` call
   //   })
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Home userData={userData} />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      {!isAuth && (
+        <>
+          <Route path='/' element={<Navigate to='/home' />} />
+          <Route path='/home' element={<Home userData={userData} />} />
+          <Route path='/login' element={<Login setIsAuth={setIsAuth} />} />
+        </>
+      )}
+      {isAuth && (
+        <Route path='/profile' element={<Profile setIsAuth={setIsAuth} />} />
+      )}
+      <Route
+        path='*'
+        element={<Navigate to={isAuth ? '/profile' : '/login'} />}
+      />
+    </Routes>
   )
 }
 
