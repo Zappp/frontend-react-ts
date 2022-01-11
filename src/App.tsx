@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
+import AddUser from './components/AddUser'
 
 import Home from './components/Home'
 import Profile from './components/Profile'
@@ -48,15 +49,32 @@ const App = () => {
       {!isAuth && (
         <>
           <Route path='/' element={<Navigate to='/home' />} />
-          <Route path='/home' element={<Home userData={userData} setIsAuth={setIsAuth} />} />
+          <Route
+            path='/home'
+            element={
+              <Home userData={userData} isAuth={isAuth} setIsAuth={setIsAuth} />
+            }
+          />
         </>
       )}
       {isAuth && (
-        <Route path='/profile' element={<Profile setIsAuth={setIsAuth} userData={userData} />} />
+        <>
+          <Route
+            path='/profile'
+            element={
+              <Profile
+                isAuth={isAuth}
+                setIsAuth={setIsAuth}
+                userData={userData}
+              />
+            }
+          />
+          <Route path='/addUser' element={<AddUser />} />
+        </>
       )}
       <Route
         path='*'
-        element={<Navigate to={isAuth ? '/profile' : '/login'} />}
+        element={<Navigate to={isAuth ? '/profile' : '/home'} />}
       />
     </Routes>
   )
