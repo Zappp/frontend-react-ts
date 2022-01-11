@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const AddUser: React.FC = () => {
+const UserForm: React.FC = () => {
   const [option, setOption] = useState('PRIVATE')
   const [businessOption, setBusinessOption] = useState('')
 
@@ -99,4 +99,4 @@ const AddUser: React.FC = () => {
   )
 }
 
-export default AddUser
+export default UserForm

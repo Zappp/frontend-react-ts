@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import AddUser from './components/AddUser'
 
 import Home from './components/Home'
 import Profile from './components/Profile'
+import UserForm from './components/UserForm'
 
 const userData = [
   {
@@ -40,10 +40,6 @@ const App = () => {
     localStorage.setItem('isAuth', String(isAuth))
   }, [isAuth])
 
-  //   const userData: UserData = getData('https://example.com/answer', { answer: 42 }).then(data => {
-  //     console.log(data) // JSON data parsed by `data.json()` call
-  //   })
-
   return (
     <Routes>
       {!isAuth && (
@@ -69,7 +65,8 @@ const App = () => {
               />
             }
           />
-          <Route path='/addUser' element={<AddUser />} />
+          <Route path='/addUser' element={<UserForm />} />
+          <Route path='/editUser' element={<UserForm />} />
         </>
       )}
       <Route

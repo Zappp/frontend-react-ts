@@ -1,12 +1,15 @@
+import { useNavigate } from 'react-router-dom'
+
 interface Props {
   isAuth: boolean
 }
 
 const UserLoggedInOperations: React.FC<Props> = ({ isAuth }) => {
-  const handleEditUser = () => {
-    //
+  const navigate = useNavigate()
+  const editUser = () => {
+      navigate('/editUser')
   }
-  const handleDeleteUser = () => {
+  const deleteUser = () => {
     //
   }
 
@@ -14,8 +17,8 @@ const UserLoggedInOperations: React.FC<Props> = ({ isAuth }) => {
     <>
       {isAuth ? (
         <>
-          <button onClick={() => handleEditUser()}>edytuj użytkownika</button>
-          <button onClick={() => handleDeleteUser()}>usuń użytkownika</button>
+          <button onClick={() => editUser()}>edytuj użytkownika</button>
+          <button onClick={() => deleteUser()}>usuń użytkownika</button>
         </>
       ) : null}
     </>

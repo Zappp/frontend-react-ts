@@ -14,13 +14,13 @@ const Profile: React.FC<Props> = ({ isAuth, setIsAuth, userData }) => {
     setIsAuth(false)
     navigate('/home')
   }
-  const addUserData = () => {
+  const createNewUser = () => {
     navigate('/addUser')
   }
   return (
     <>
       <button onClick={() => handleLogout()}>Wyloguj</button>
-      <button onClick={() => addUserData()}>Dodaj użytkownika</button>
+      <button onClick={() => createNewUser()}>Dodaj użytkownika</button>
       <TableUsers userData={userData} isAuth={isAuth} />
     </>
   )
