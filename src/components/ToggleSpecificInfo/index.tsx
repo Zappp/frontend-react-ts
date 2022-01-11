@@ -5,7 +5,7 @@ interface Props {
   userPrivateData: UserPrivateData
 }
 
-const SpecificInfo: React.FC<Props> = ({ userPrivateData }) => {
+const ToggleSpecificInfo: React.FC<Props> = ({ userPrivateData }) => {
   const [isShown, setIsShown] = useState(false)
   return (
     <>
@@ -24,13 +24,9 @@ const SpecificInfo: React.FC<Props> = ({ userPrivateData }) => {
           <td></td>
         </>
       )}
-      <td>
-        <button type='button' onClick={() => setIsShown(!isShown)}>
-          Pokaż/Ukryj
-        </button>
-      </td>
+      <td style={{cursor:'pointer'}} onClick={() => setIsShown(!isShown)}>Pokaż/Ukryj</td>
     </>
   )
 }
 
-export default SpecificInfo
+export default ToggleSpecificInfo

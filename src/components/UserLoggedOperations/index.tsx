@@ -7,7 +7,7 @@ interface Props {
 const UserLoggedInOperations: React.FC<Props> = ({ isAuth }) => {
   const navigate = useNavigate()
   const editUser = () => {
-      navigate('/editUser')
+    navigate('/editUser')
   }
   const deleteUser = () => {
     //
@@ -17,8 +17,13 @@ const UserLoggedInOperations: React.FC<Props> = ({ isAuth }) => {
     <>
       {isAuth ? (
         <>
-          <button onClick={() => editUser()}>edytuj użytkownika</button>
-          <button onClick={() => deleteUser()}>usuń użytkownika</button>
+          <td style={{ cursor: 'pointer' }} onClick={() => editUser()}>
+            Edytuj użytkownika
+          </td>
+
+          <td style={{ cursor: 'pointer' }} onClick={() => deleteUser()}>
+            Usuń użytkownika
+          </td>
         </>
       ) : null}
     </>

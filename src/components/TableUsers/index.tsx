@@ -1,5 +1,5 @@
 import { UserData } from '../../types'
-import SpecificInfo from '../SpecificInfo'
+import ToggleSpecificInfo from '../ToggleSpecificInfo'
 import UserLoggedInOperations from '../UserLoggedOperations'
 
 interface Props {
@@ -27,7 +27,7 @@ const TableUsers: React.FC<Props> = ({ userData, isAuth }) => {
             <td>{user.name}</td>
             <td>{user.surname}</td>
             <td>{user.email}</td>
-            <SpecificInfo userPrivateData={user} />
+            <ToggleSpecificInfo userPrivateData={user} />
             <UserLoggedInOperations isAuth={isAuth} />
           </tr>
         ))}
