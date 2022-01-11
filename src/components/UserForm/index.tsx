@@ -1,8 +1,16 @@
 import { useState } from 'react'
 
 const UserForm: React.FC = () => {
+  const [name, setName] = useState('')
+  const [surname, setSurname] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [telNumber, setTelNumber] = useState('')
+  const [birthDate, setBirthDate] = useState('')
+
   const [option, setOption] = useState('PRIVATE')
-  const [businessOption, setBusinessOption] = useState('')
+  const [businessOption, setBusinessOption] = useState('CLIENT')
+  const [userDefinedCategory, setUserDefinedCategory] = useState('')
 
   const SwitchSelect = (option: string) => {
     switch (option) {
@@ -12,26 +20,30 @@ const UserForm: React.FC = () => {
             value={businessOption}
             onChange={event => setBusinessOption(event.target.value)}
           >
-            <option value='BOSS'>Szef</option>
             <option value='CLIENT'>Klient</option>
+            <option value='BOSS'>Szef</option>
             <option value='WORKER'>Pracownik</option>
           </select>
         )
       case 'ELSE':
         return (
           <label>
-            <input type='text' name='userDefinedCategory' />
+            <input
+              type='text'
+              onChange={e => setUserDefinedCategory(e.target.value)}
+            />
           </label>
         )
-      default:
-        return <div></div>
+
+      case 'PRIVATE':
+        return <div onLoad={e => setUserDefinedCategory('PRIVATE')}></div>
     }
   }
 
   return (
     <form>
       <label>
-        <input type='text' name='name' />
+        <input type='text' onChange={e => setName(e.target.value)} />
         <br></br>
         Imię
         <br></br>
@@ -40,7 +52,7 @@ const UserForm: React.FC = () => {
       <br></br>
 
       <label>
-        <input type='text' name='surname' />
+        <input type='text' onChange={e => setSurname(e.target.value)} />
         <br></br>
         Nazwisko
         <br></br>
@@ -49,7 +61,7 @@ const UserForm: React.FC = () => {
       <br></br>
 
       <label>
-        <input type='email' name='email' />
+        <input type='email' onChange={e => setEmail(e.target.value)} />
         <br></br>
         Email
         <br></br>
@@ -58,7 +70,7 @@ const UserForm: React.FC = () => {
       <br></br>
 
       <label>
-        <input type='password' name='password' />
+        <input type='password' onChange={e => setPassword(e.target.value)} />
         <br></br>
         Hasło
         <br></br>
@@ -67,7 +79,7 @@ const UserForm: React.FC = () => {
       <br></br>
 
       <label>
-        <input type='number' name='telNumber' />
+        <input type='number' onChange={e => setTelNumber(e.target.value)} />
         <br></br>
         Numer telefonu
         <br></br>
@@ -76,7 +88,7 @@ const UserForm: React.FC = () => {
       <br></br>
 
       <label>
-        <input type='date' name='birthDate' />
+        <input type='date' onChange={e => setBirthDate(e.target.value)} />
         <br></br>
         Data urodzenia
         <br></br>
