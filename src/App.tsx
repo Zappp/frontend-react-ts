@@ -1,7 +1,7 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
-import Home from './components/Home'
-import Login from './components/Login'
 import { useEffect, useState } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
+
+import Home from './components/Home'
 import Profile from './components/Profile'
 
 const userData = [
@@ -48,12 +48,11 @@ const App = () => {
       {!isAuth && (
         <>
           <Route path='/' element={<Navigate to='/home' />} />
-          <Route path='/home' element={<Home userData={userData} />} />
-          <Route path='/login' element={<Login setIsAuth={setIsAuth} />} />
+          <Route path='/home' element={<Home userData={userData} setIsAuth={setIsAuth} />} />
         </>
       )}
       {isAuth && (
-        <Route path='/profile' element={<Profile setIsAuth={setIsAuth} />} />
+        <Route path='/profile' element={<Profile setIsAuth={setIsAuth} userData={userData} />} />
       )}
       <Route
         path='*'
