@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import BusinessSwitch from '../BusinessSwitch'
+import SubcategorySwitch from '../SubcategorySwitch'
 
 const UserForm: React.FC = () => {
   const [name, setName] = useState('')
@@ -12,14 +12,10 @@ const UserForm: React.FC = () => {
   const [option, setOption] = useState('PRIVATE')
   const [value, setValue] = useState('')
 
-  console.log({option, value})
-
-  const SwitchSelect = (optionType: string) => {
-    switch (optionType) {
+  const CategorySwitch = (option: string) => {
+    switch (option) {
       case 'BUSINESS':
-        return (
-          <BusinessSwitch value={value} setValue={setValue} />
-        )
+        return <SubcategorySwitch value={value} setValue={setValue} />
       case 'ELSE':
         return (
           <label>
@@ -31,7 +27,7 @@ const UserForm: React.FC = () => {
         )
 
       case 'PRIVATE':
-        return <div onChange={() => setValue('')}></div>
+        return <span onChange={() => setValue('')}></span>
     }
   }
 
@@ -106,7 +102,7 @@ const UserForm: React.FC = () => {
         <option value='BUSINESS'>Biznesowa</option>
         <option value='ELSE'>Inna</option>
       </select>
-      {SwitchSelect(option)}
+      {CategorySwitch(option)}
       <br></br>
 
       <input type='submit' value='Wyślij' />
