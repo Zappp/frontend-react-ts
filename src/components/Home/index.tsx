@@ -1,15 +1,22 @@
 import { useNavigate } from 'react-router-dom'
-import { UserData } from '../../types'
+
 import TableUsers from '../TableUsers'
 
+import { userProps, UserDispatchActionProps } from '../../types'
 
 interface Props {
-  userData: UserData[],
-  setIsAuth: React.Dispatch<React.SetStateAction<boolean>>,
+  usersState: userProps[]
+  dispatchUser: React.Dispatch<UserDispatchActionProps>
+  setIsAuth: React.Dispatch<React.SetStateAction<boolean>>
   isAuth: boolean
 }
 
-const Home: React.FC<Props> = ({ userData, setIsAuth, isAuth }) => {
+const Home: React.FC<Props> = ({
+  usersState,
+  dispatchUser,
+  setIsAuth,
+  isAuth
+}) => {
   let navigate = useNavigate()
   const handleLogin = () => {
     setIsAuth(true)
@@ -18,7 +25,11 @@ const Home: React.FC<Props> = ({ userData, setIsAuth, isAuth }) => {
   return (
     <>
       <button onClick={() => handleLogin()}>Login</button>
-      <TableUsers userData={userData} isAuth={isAuth} />
+      <TableUsers
+        usersState={usersState}
+        dispatchUser={dispatchUser}
+        isAuth={isAuth}
+      />
     </>
   )
 }

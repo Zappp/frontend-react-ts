@@ -1,12 +1,18 @@
-export interface UserPrivateData {
-    password?: String,
-    category?: String,
-    telNumber?: String,
-    birthDate?: String 
+export interface userProps {
+  id: number;
+  name?: string;
+  surname?: string;
+  email?: string;
+  password?: string;
+  category?: string;
+  telNumber?: string;
+  birthDate?: string;
+  isVisible?: boolean;
 }
 
-export interface UserData extends UserPrivateData {
-    name?: string
-    surname?: string
-    email?: string
+export interface UserDispatchActionProps {
+  type: string;
+  payload: {
+    user: userProps;
+  };
 }

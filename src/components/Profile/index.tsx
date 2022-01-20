@@ -1,27 +1,40 @@
-import { useNavigate } from 'react-router-dom'
-import { UserData } from '../../types'
+import { Outlet, useNavigate } from 'react-router-dom'
+
 import TableUsers from '../TableUsers'
 
+import { userProps, UserDispatchActionProps } from '../../types'
+
 interface Props {
-  userData: UserData[]
+  usersState: userProps[]
+  dispatchUser: React.Dispatch<UserDispatchActionProps>
   isAuth: boolean
   setIsAuth: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const Profile: React.FC<Props> = ({ isAuth, setIsAuth, userData }) => {
+const Profile: React.FC<Props> = ({
+  isAuth,
+  setIsAuth,
+  usersState,
+  dispatchUser
+}) => {
   let navigate = useNavigate()
   const handleLogout = () => {
     setIsAuth(false)
     navigate('/home')
   }
   const createNewUser = () => {
-    navigate('/addUser')
+    navigate('/profile/addUser')
   }
   return (
     <>
       <button onClick={() => handleLogout()}>Wyloguj</button>
       <button onClick={() => createNewUser()}>Dodaj użytkownika</button>
-      <TableUsers userData={userData} isAuth={isAuth} />
+      <TableUsers
+        usersState={usersState}
+        dispatchUser={dispatchUser}
+        isAuth={isAuth}
+      />
+      <Outlet />
     </>
   )
 }

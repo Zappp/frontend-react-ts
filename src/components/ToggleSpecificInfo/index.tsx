@@ -1,20 +1,19 @@
-import { UserPrivateData } from '../../types'
-import { useState } from 'react'
+import { UserDispatchActionProps, userProps } from '../../types'
 
 interface Props {
-  userPrivateData: UserPrivateData
+  dispatchUser: React.Dispatch<UserDispatchActionProps>
+  user: userProps
 }
 
-const ToggleSpecificInfo: React.FC<Props> = ({ userPrivateData }) => {
-  const [isShown, setIsShown] = useState(false)
+const ToggleSpecificInfo: React.FC<Props> = ({ dispatchUser, user }) => {
   return (
     <>
-      {isShown ? (
+      {user.isVisible ? (
         <>
-          <td>{userPrivateData.password}</td>
-          <td>{userPrivateData.category}</td>
-          <td>{userPrivateData.telNumber}</td>
-          <td>{userPrivateData.birthDate}</td>
+          <td>{user.password}</td>
+          <td>{user.category}</td>
+          <td>{user.telNumber}</td>
+          <td>{user.birthDate}</td>
         </>
       ) : (
         <>
@@ -24,7 +23,17 @@ const ToggleSpecificInfo: React.FC<Props> = ({ userPrivateData }) => {
           <td></td>
         </>
       )}
-      <td style={{cursor:'pointer'}} onClick={() => setIsShown(!isShown)}>Pokaż/Ukryj</td>
+      <td
+        style={{ cursor: 'pointer' }}
+        onClick={() =>
+          dispatchUser({
+            type: 'TOGGLE_USER_VISIBLE_BY_ID',
+            payload: { user: user }
+          })
+        }
+      >
+        Pokaż/Ukryj
+      </td>
     </>
   )
 }

@@ -1,13 +1,13 @@
 import { useNavigate } from 'react-router-dom'
 
 interface Props {
-  isAuth: boolean
+  userId: number | undefined
 }
 
-const UserLoggedInOperations: React.FC<Props> = ({ isAuth }) => {
+const UserLoggedInOperations: React.FC<Props> = ({ userId }) => {
   const navigate = useNavigate()
   const editUser = () => {
-    navigate('/editUser')
+    navigate(`/profile/editUser/${userId}`)
   }
   const deleteUser = () => {
     //
@@ -15,17 +15,13 @@ const UserLoggedInOperations: React.FC<Props> = ({ isAuth }) => {
 
   return (
     <>
-      {isAuth ? (
-        <>
-          <td style={{ cursor: 'pointer' }} onClick={() => editUser()}>
-            Edytuj użytkownika
-          </td>
+      <td style={{ cursor: 'pointer' }} onClick={() => editUser()}>
+        Edytuj użytkownika
+      </td>
 
-          <td style={{ cursor: 'pointer' }} onClick={() => deleteUser()}>
-            Usuń użytkownika
-          </td>
-        </>
-      ) : null}
+      <td style={{ cursor: 'pointer' }} onClick={() => deleteUser()}>
+        Usuń użytkownika
+      </td>
     </>
   )
 }
