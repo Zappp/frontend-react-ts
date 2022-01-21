@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useReducer } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { useReducer } from 'react'
 
 import Home from './components/Home'
 import Profile from './components/Profile'
@@ -19,7 +18,7 @@ const usersData = [
     category: 'PRIVATE',
     telNumber: 'sssssssss',
     birthDate: 'dd-mm-yyyy',
-    isVisible: false
+    isVisible: false // do wywalenia z obiektu
   },
   {
     id: 2,
@@ -30,7 +29,7 @@ const usersData = [
     category: 'BUSINESS',
     telNumber: 'sssssssss',
     birthDate: 'dd-mm-yyyy',
-    isVisible: false
+    isVisible: false // do wywalenia z obiektu
   }
 ]
 
