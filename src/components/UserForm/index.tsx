@@ -1,112 +1,85 @@
-import { useState } from 'react'
-import UserSubcategorySwitch from '../UserSubcategorySwitch'
+import { useReducer } from 'react'
+import InputUserCredentialWithLabel from '../InputUserCredentialWithLabel'
+import UserSwitch from '../UserSwitch'
+import { newUserProps, newUserDispatchActionProps } from '../../types'
+
+const userReducer = ( // dispatcher from child might not pass some params. error might be in child actually
+  userState: newUserProps,
+  action: newUserDispatchActionProps
+) => {
+  switch (action.type) {
+    case 'ADD_NEW_CREDENTIAL':
+      return Object.assign(userState, action.payload.newUser)
+    default:
+      return userState
+  }
+}
 
 const UserForm: React.FC = () => {
-
-  const [name, setName] = useState('') //useEffect?
-  const [surname, setSurname] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [telNumber, setTelNumber] = useState('')
-  const [birthDate, setBirthDate] = useState('')
-
-  const [option, setOption] = useState('PRIVATE')
-  const [value, setValue] = useState('')
-
-  const UserCategorySwitch = (option: string) => {
-    switch (option) {
-      case 'BUSINESS':
-        return <UserSubcategorySwitch value={value} setValue={setValue} />
-      case 'ELSE':
-        return (
-          <label>
-            <input
-              type='text'
-              onChange={event => setValue(event.target.value)}
-            />
-          </label>
-        )
-
-      case 'PRIVATE':
-        return <span onChange={() => setValue('')}></span>
-    }
-  }
-
+  const [userState, dispatchUser] = useReducer(userReducer, {
+    name: '',
+    surname: '',
+    email: '',
+    password: '',
+    telNumber: '',
+    birthDate: '',
+    option: 'PRIVATE',
+    optionValue: ''
+  })
   return (
     <form>
-      <label>
-        <input type='text' onChange={event => setName(event.target.value)} />
-        <br></br>
-        Imię
-        <br></br>
-      </label>
-
+      <InputUserCredentialWithLabel
+        input='text'
+        inputTextContent='imie'
+        dispatchUser={dispatchUser}
+        userPropName='name'
+      />
       <br></br>
-
-      <label>
-        <input type='text' onChange={event => setSurname(event.target.value)} />
-        <br></br>
-        Nazwisko
-        <br></br>
-      </label>
-
       <br></br>
-
-      <label>
-        <input type='email' onChange={event => setEmail(event.target.value)} />
-        <br></br>
-        Email
-        <br></br>
-      </label>
-
+      <InputUserCredentialWithLabel
+        input='text'
+        inputTextContent='nazwisko'
+        dispatchUser={dispatchUser}
+        userPropName='surname'
+      />
       <br></br>
-
-      <label>
-        <input
-          type='password'
-          onChange={event => setPassword(event.target.value)}
-        />
-        <br></br>
-        Hasło
-        <br></br>
-      </label>
-
       <br></br>
-
-      <label>
-        <input
-          type='number'
-          onChange={event => setTelNumber(event.target.value)}
-        />
-        <br></br>
-        Numer telefonu
-        <br></br>
-      </label>
-
+      <InputUserCredentialWithLabel
+        input='email'
+        inputTextContent='email'
+        dispatchUser={dispatchUser}
+        userPropName='email'
+      />
       <br></br>
-
-      <label>
-        <input
-          type='date'
-          onChange={event => setBirthDate(event.target.value)}
-        />
-        <br></br>
-        Data urodzenia
-        <br></br>
-      </label>
-
       <br></br>
-
-      <label>Wybierz kategorię użytkownika</label>
-      <select value={option} onChange={event => setOption(event.target.value)}>
-        <option value='PRIVATE'>Prywatna</option>
-        <option value='BUSINESS'>Biznesowa</option>
-        <option value='ELSE'>Inna</option>
-      </select>
-      {UserCategorySwitch(option) /*move to different module*/}
+      <InputUserCredentialWithLabel
+        input='text'
+        inputTextContent='hasło'
+        dispatchUser={dispatchUser}
+        userPropName='password'
+      />
       <br></br>
-
-      <input type='submit' value='Wyślij' />
+      <br></br>
+      <InputUserCredentialWithLabel
+        input='text'
+        inputTextContent='numer telefonu'
+        dispatchUser={dispatchUser}
+        userPropName='telNumber'
+      />
+      <br></br>
+      <br></br>
+      <InputUserCredentialWithLabel
+        input='date'
+        inputTextContent='data urodzenia'
+        dispatchUser={dispatchUser}
+        userPropName='birthDate'
+      />
+      <br></br>
+      <br></br>
+      <UserSwitch />
+      <br></br>
+      <br></br>
+      <input type='submit' />
     </form>
   )
 }
