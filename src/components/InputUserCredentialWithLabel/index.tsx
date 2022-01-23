@@ -14,7 +14,9 @@ const createUserDispatchPropWithValue = (
   let newUserPropToDispatch = {}
   Object.defineProperty(newUserPropToDispatch, userPropNameToDispatch, {
     value: event.target.value,
-    writable: true
+    enumerable: true,
+    writable: true,
+    configurable: false
   })
   return newUserPropToDispatch
 }

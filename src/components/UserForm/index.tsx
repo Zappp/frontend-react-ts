@@ -3,12 +3,12 @@ import InputUserCredentialWithLabel from '../InputUserCredentialWithLabel'
 import UserSwitch from '../UserSwitch'
 import { newUserProps, newUserDispatchActionProps } from '../../types'
 
-const userReducer = ( // dispatcher from child might not pass some params. error might be in child actually
-  userState: newUserProps,
+const userReducer = (
+  userState: newUserProps, // lepsze typy danych user (polaczyc z userProps)
   action: newUserDispatchActionProps
 ) => {
   switch (action.type) {
-    case 'ADD_NEW_CREDENTIAL':
+    case 'ADD_NEW_USER_CREDENTIAL':
       return Object.assign(userState, action.payload.newUser)
     default:
       return userState
@@ -16,7 +16,7 @@ const userReducer = ( // dispatcher from child might not pass some params. error
 }
 
 const UserForm: React.FC = () => {
-  const [userState, dispatchUser] = useReducer(userReducer, {
+  const [userState, dispatchUser] = useReducer(userReducer, { // moge nie miec kontroli nad tym co wpisuje user w czasie rzeczywistym
     name: '',
     surname: '',
     email: '',
