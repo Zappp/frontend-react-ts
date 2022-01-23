@@ -9,7 +9,7 @@ const userReducer = (
 ) => {
   switch (action.type) {
     case 'ADD_NEW_USER_CREDENTIAL':
-      return Object.assign(userState, action.payload.newUser)
+      return {...userState, ...action.payload.newUser}
     default:
       return userState
   }
@@ -26,6 +26,7 @@ const UserForm: React.FC = () => {
     option: 'PRIVATE',
     optionValue: ''
   })
+  console.log(userState)
   return (
     <form>
       <InputUserCredentialWithLabel
