@@ -8,7 +8,7 @@ const userReducer = (
   action: newUserDispatchActionProps
 ) => {
   switch (action.type) {
-    case 'ADD_NEW_USER_CREDENTIAL':
+    case 'INPUT_USER_CREDENTIAL':
       return {...userState, ...action.payload.newUser}
     default:
       return userState
@@ -26,7 +26,7 @@ const UserForm: React.FC = () => {
     option: 'PRIVATE',
     optionValue: ''
   })
-  console.log(userState)
+  // console.log(userState)
   return (
     <form>
       <CustomInputUser

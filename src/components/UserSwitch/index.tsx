@@ -2,7 +2,7 @@ import { useState } from 'react'
 import UserBusinessSwitch from '../UserBusinessSwitch'
 
 const UserSwitch = () => {
-  const [option, setOption] = useState('PRIVATE')
+  const [option, setOption] = useState('BUSINESS')
   const [value, setValue] = useState('')
   const UserCategorySwitch = (option: string) => {
     switch (option) {
@@ -17,7 +17,6 @@ const UserSwitch = () => {
             />
           </label>
         )
-
       case 'PRIVATE':
         return <span onChange={() => setValue('')}></span>
     }
