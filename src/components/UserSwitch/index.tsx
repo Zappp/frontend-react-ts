@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import UserSubcategorySwitch from '../UserSubcategorySwitch'
+import UserBusinessSwitch from '../UserBusinessSwitch'
 
 const UserSwitch = () => {
   const [option, setOption] = useState('PRIVATE')
@@ -7,7 +7,7 @@ const UserSwitch = () => {
   const UserCategorySwitch = (option: string) => {
     switch (option) {
       case 'BUSINESS':
-        return <UserSubcategorySwitch value={value} setValue={setValue} />
+        return <UserBusinessSwitch value={value} setValue={setValue} />
       case 'ELSE':
         return (
           <label>

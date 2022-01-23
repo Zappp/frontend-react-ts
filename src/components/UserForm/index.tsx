@@ -1,5 +1,5 @@
 import { useReducer } from 'react'
-import InputUserCredentialWithLabel from '../InputUserCredentialWithLabel'
+import CustomInputUser from '../CustomInputUser'
 import UserSwitch from '../UserSwitch'
 import { newUserProps, newUserDispatchActionProps } from '../../types'
 
@@ -16,7 +16,7 @@ const userReducer = (
 }
 
 const UserForm: React.FC = () => {
-  const [userState, dispatchUser] = useReducer(userReducer, { // moge nie miec kontroli nad tym co wpisuje user w czasie rzeczywistym
+  const [userState, dispatchUser] = useReducer(userReducer, {
     name: '',
     surname: '',
     email: '',
@@ -29,7 +29,7 @@ const UserForm: React.FC = () => {
   console.log(userState)
   return (
     <form>
-      <InputUserCredentialWithLabel
+      <CustomInputUser
         input='text'
         inputTextContent='imie'
         dispatchUser={dispatchUser}
@@ -37,7 +37,7 @@ const UserForm: React.FC = () => {
       />
       <br></br>
       <br></br>
-      <InputUserCredentialWithLabel
+      <CustomInputUser
         input='text'
         inputTextContent='nazwisko'
         dispatchUser={dispatchUser}
@@ -45,7 +45,7 @@ const UserForm: React.FC = () => {
       />
       <br></br>
       <br></br>
-      <InputUserCredentialWithLabel
+      <CustomInputUser
         input='email'
         inputTextContent='email'
         dispatchUser={dispatchUser}
@@ -53,7 +53,7 @@ const UserForm: React.FC = () => {
       />
       <br></br>
       <br></br>
-      <InputUserCredentialWithLabel
+      <CustomInputUser
         input='text'
         inputTextContent='hasło'
         dispatchUser={dispatchUser}
@@ -61,7 +61,7 @@ const UserForm: React.FC = () => {
       />
       <br></br>
       <br></br>
-      <InputUserCredentialWithLabel
+      <CustomInputUser
         input='text'
         inputTextContent='numer telefonu'
         dispatchUser={dispatchUser}
@@ -69,7 +69,7 @@ const UserForm: React.FC = () => {
       />
       <br></br>
       <br></br>
-      <InputUserCredentialWithLabel
+      <CustomInputUser
         input='date'
         inputTextContent='data urodzenia'
         dispatchUser={dispatchUser}

@@ -5,7 +5,7 @@ interface Props {
   setValue: React.Dispatch<React.SetStateAction<string>>
 }
 
-const UserSubcategorySwitch: React.FC<Props> = ({ value, setValue }) => {
+const UserBusinessSwitch: React.FC<Props> = ({ value, setValue }) => {
   useEffect(() => {
     setValue('CLIENT')
     return () => {
@@ -21,4 +21,4 @@ const UserSubcategorySwitch: React.FC<Props> = ({ value, setValue }) => {
   )
 }
 
-export default UserSubcategorySwitch
+export default UserBusinessSwitch
