@@ -1,19 +1,19 @@
 import { useEffect } from 'react'
 
 interface Props {
-  value: string
-  setValue: React.Dispatch<React.SetStateAction<string>>
+  subCategory: string
+  setSubCategory: React.Dispatch<React.SetStateAction<string>>
 }
 
-const UserSubcategorySwitch: React.FC<Props> = ({ value, setValue }) => {
+const UserSubcategorySwitch: React.FC<Props> = ({ subCategory, setSubCategory }) => {
   useEffect(() => {
-    setValue('CLIENT')
+    setSubCategory('CLIENT')
     return () => {
-      setValue('')
+      setSubCategory('')
     }
   }, [])
   return (
-    <select value={value} onChange={event => setValue(event.target.value)}>
+    <select value={subCategory} onChange={event => setSubCategory(event.target.value)}>
       <option value='CLIENT'>Klient</option>
       <option value='BOSS'>Szef</option>
       <option value='WORKER'>Pracownik</option>

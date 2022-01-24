@@ -22,16 +22,15 @@ export interface newUserProps {
   surname?: string
   email?: string
   password?: string
-  category?: string
   telNumber?: string
   birthDate?: string
-  option?: string
-  optionValue?: string
+  category?: string
+  subCategory?: string
 }
 
 export interface newUserDispatchActionProps {
   type: string
   payload: {
-    newUser: newUserProps
+    newUserProps: newUserProps
   }
 }

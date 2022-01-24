@@ -9,7 +9,7 @@ const userReducer = (
 ) => {
   switch (action.type) {
     case 'INPUT_USER_CREDENTIAL':
-      return {...userState, ...action.payload.newUser}
+      return { ...userState, ...action.payload.newUserProps }
     default:
       return userState
   }
@@ -23,10 +23,10 @@ const UserForm: React.FC = () => {
     password: '',
     telNumber: '',
     birthDate: '',
-    option: 'PRIVATE',
-    optionValue: ''
+    category: 'PRIVATE',
+    subCategory: ''
   })
-  // console.log(userState)
+  console.log(userState)
   return (
     <form>
       <CustomInputUser
@@ -77,7 +77,7 @@ const UserForm: React.FC = () => {
       />
       <br></br>
       <br></br>
-      <UserSwitch />
+      <UserSwitch dispatchUser={dispatchUser} />
       <br></br>
       <br></br>
       <input type='submit' />

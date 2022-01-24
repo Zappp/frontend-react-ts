@@ -34,7 +34,7 @@ const CustomInputUser: React.FC<Props> = ({
           dispatchUser({
             type: 'INPUT_USER_CREDENTIAL',
             payload: {
-              newUser: setPropToDispatch(userPropName, event)
+              newUserProps: setPropToDispatch(userPropName, event)
             }
           })
         }
