@@ -7,7 +7,8 @@ interface Props {
 }
 
 const UserSwitch: React.FC<Props> = ({ dispatchUser }) => {
-  const [category, setCategory] = useState('PRIVATE') 
+  const [category, setCategory] = useState('PRIVATE') // move user state logic away from category (pasuje przez chwile np 'else':'boss')
+
   const [subCategory, setSubCategory] = useState('')
 
   useEffect(() => { //powinno byc lepiej rozwiazane bo chaos
@@ -20,7 +21,7 @@ const UserSwitch: React.FC<Props> = ({ dispatchUser }) => {
         }
       }
     })
-  }, [subCategory])
+  }, [category, subCategory])
 
   const UserCategorySwitch = (category: string) => {
     switch (category) {
