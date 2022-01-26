@@ -56,7 +56,7 @@ const UserSwitch: React.FC<Props> = ({ dispatchUser }) => {
         <option value='BUSINESS'>Biznesowa</option>
         <option value='ELSE'>Inna</option>
       </select>
-      {UserCategorySwitch(category) /*move to different module*/}
+      {UserCategorySwitch(category) /*move to different module to separate logic??*/}
     </>
   )
 }
