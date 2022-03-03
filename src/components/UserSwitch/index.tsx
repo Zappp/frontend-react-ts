@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import { newUserDispatchActionProps } from '../../types'
+import CustomInputUser from '../CustomInputUser'
 import UserBusinessSwitch from '../UserBusinessSwitch'
-import UserInputSwitch from '../UserInputSwitch'
 
 interface Props {
   dispatchUser: React.Dispatch<newUserDispatchActionProps>
 }
 
-const UserSwitch: React.FC<Props> = ({ dispatchUser }) => {
+const UserSwitch: React.FC<Props> = ({ dispatchUser }) => { //better (single) component can be build to render both user and business switch data 
   const [category, setCategory] = useState('PRIVATE')
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const UserSwitch: React.FC<Props> = ({ dispatchUser }) => {
       case 'BUSINESS':
         return <UserBusinessSwitch dispatchUser={dispatchUser} />
       case 'ELSE':
-        return <UserInputSwitch dispatchUser={dispatchUser} />
+        return <CustomInputUser input='text' dispatchUser={dispatchUser} userPropName='subCategory' />
     }
   }
   return (
@@ -40,9 +40,7 @@ const UserSwitch: React.FC<Props> = ({ dispatchUser }) => {
         <option value='BUSINESS'>Biznesowa</option>
         <option value='ELSE'>Inna</option>
       </select>
-      {UserCategorySwitch(
-        category
-      ) /*move to different module to separate logic??*/}
+      {UserCategorySwitch(category)}
     </>
   )
 }

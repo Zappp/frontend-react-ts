@@ -26,7 +26,6 @@ const UserForm: React.FC = () => {
     category: '',
     subCategory: ''
   })
-  console.log(userState)
   return (
     <form>
       <CustomInputUser

@@ -2,7 +2,7 @@ import { newUserProps, newUserDispatchActionProps } from '../../types'
 
 interface Props {
   input: React.HTMLInputTypeAttribute
-  inputTextContent: string
+  inputTextContent?: string
   dispatchUser: React.Dispatch<newUserDispatchActionProps>
   userPropName: keyof newUserProps
 }
