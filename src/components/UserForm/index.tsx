@@ -23,7 +23,7 @@ const UserForm: React.FC = () => {
     password: '',
     telNumber: '',
     birthDate: '',
-    category: 'PRIVATE',
+    category: '',
     subCategory: ''
   })
   console.log(userState)

@@ -1,48 +1,32 @@
 import { useEffect, useState } from 'react'
-import UserBusinessSwitch from '../UserBusinessSwitch'
 import { newUserDispatchActionProps } from '../../types'
+import UserBusinessSwitch from '../UserBusinessSwitch'
+import UserInputSwitch from '../UserInputSwitch'
 
 interface Props {
   dispatchUser: React.Dispatch<newUserDispatchActionProps>
 }
 
 const UserSwitch: React.FC<Props> = ({ dispatchUser }) => {
-  const [category, setCategory] = useState('PRIVATE') // move user state logic away from category (pasuje przez chwile np 'else':'boss')
+  const [category, setCategory] = useState('PRIVATE')
 
-  const [subCategory, setSubCategory] = useState('')
-
-  useEffect(() => { //powinno byc lepiej rozwiazane bo chaos
+  useEffect(() => {
     dispatchUser({
       type: 'INPUT_USER_CREDENTIAL',
       payload: {
         newUserProps: {
-          category: category,
-          subCategory: subCategory
+          category: category
         }
       }
     })
-  }, [category, subCategory])
+  }, [category])
 
   const UserCategorySwitch = (category: string) => {
     switch (category) {
       case 'BUSINESS':
-        return (
-          <UserBusinessSwitch
-            subCategory={subCategory}
-            setSubCategory={setSubCategory}
-          />
-        )
+        return <UserBusinessSwitch dispatchUser={dispatchUser} />
       case 'ELSE':
-        return (
-          <label>
-            <input
-              type='text'
-              onChange={event => setSubCategory(event.target.value)}
-            />
-          </label>
-        )
-      case 'PRIVATE':
-        return <span onChange={() => setSubCategory('')}></span>
+        return <UserInputSwitch dispatchUser={dispatchUser} />
     }
   }
   return (
@@ -56,7 +40,9 @@ const UserSwitch: React.FC<Props> = ({ dispatchUser }) => {
         <option value='BUSINESS'>Biznesowa</option>
         <option value='ELSE'>Inna</option>
       </select>
-      {UserCategorySwitch(category) /*move to different module to separate logic??*/}
+      {UserCategorySwitch(
+        category
+      ) /*move to different module to separate logic??*/}
     </>
   )
 }

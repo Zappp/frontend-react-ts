@@ -5,8 +5,8 @@ interface Props {
   dispatchUser: React.Dispatch<newUserDispatchActionProps>
 }
 
-const UserBusinessSwitch: React.FC<Props> = ({ dispatchUser }) => {
-  const [subCategory, setSubCategory] = useState('BOSS')
+const UserInputSwitch: React.FC<Props> = ({ dispatchUser }) => {
+  const [subCategory, setSubCategory] = useState('')
 
   useEffect(() => {
     dispatchUser({
@@ -33,15 +33,13 @@ const UserBusinessSwitch: React.FC<Props> = ({ dispatchUser }) => {
   }, [])
 
   return (
-    <select
-      value={subCategory}
-      onChange={event => setSubCategory(event.target.value)}
-    >
-      <option value='CLIENT'>Klient</option>
-      <option value='BOSS'>Szef</option>
-      <option value='WORKER'>Pracownik</option>
-    </select>
+    <label>
+      <input
+        type='text'
+        onChange={event => setSubCategory(event.target.value)}
+      />
+    </label>
   )
 }
 
-export default UserBusinessSwitch
+export default UserInputSwitch
