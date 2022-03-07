@@ -1,4 +1,4 @@
-export interface userProps {
+export interface userProps { // better type might be specified
   id: number;
   name?: string;
   surname?: string;
@@ -17,7 +17,7 @@ export interface UserDispatchActionProps {
   };
 }
 
-export interface newUserProps {
+export interface newUserProps { // better type might be specified
   name?: string
   surname?: string
   email?: string

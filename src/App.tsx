@@ -18,7 +18,7 @@ const usersData = [
     category: 'PRIVATE',
     telNumber: 'sssssssss',
     birthDate: 'dd-mm-yyyy',
-    isVisible: false // do wywalenia z obiektu --> object.assign()
+    isVisible: false //why wokring if removed?
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ const usersData = [
     category: 'BUSINESS',
     telNumber: 'sssssssss',
     birthDate: 'dd-mm-yyyy',
-    isVisible: false // do wywalenia z obiektu --> object.assign()
+    isVisible: false //why working if removed?
   }
 ]
 
@@ -47,7 +47,7 @@ const usersReducer = (
       })
       return newUsersState
     default:
-      throw new Error('app user reducer error');
+      throw new Error('app user reducer error')
   }
 }
 
